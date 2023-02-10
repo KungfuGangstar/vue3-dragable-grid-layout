@@ -20,6 +20,8 @@
           @resize="emit('item-resize', $event)"
           @move="emit('item-move', $event)"
           @moved="emit('item-moved', $event)"
+          ref="gridItemRefs"
+     
         >
           <slot
             name="gridItemContent"
@@ -206,7 +208,7 @@ const width = ref(0)
 let observer: IntersectionObserver
 // refs
 const wrapper = ref<HTMLDivElement | null>(null)
-
+const gridItemRefs = ref([])
 // computed
 const gridItemProps = computed(() => ({
   breakpointCols: props.cols,
@@ -491,7 +493,7 @@ const createObserver = () => {
     ...props.intersectionObserverConfig
   })
 }
-
+defineExpose( {dragEvent,wrapper,gridItemRefs} )
 
 // lifecycles
 onCreated()
@@ -534,6 +536,8 @@ onMounted(() => {
     })
   })
 })
+
+
 </script>
 
 <style>

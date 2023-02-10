@@ -501,6 +501,8 @@ const onCreate = () => {
   emitter?.on('recalculate-styles', createStyle)
   emitter?.on('set-col-num', setColNum)
 }
+
+defineExpose({calcXY, dragging})
 // lifecycle
 
 onCreate()
@@ -556,7 +558,7 @@ onMounted(() => {
     }
 
     &.vue-grid-placeholder {
-      background: red;
+      background: grey;
       opacity: 0.2;
       transition-duration: 100ms;
       z-index: 2;
