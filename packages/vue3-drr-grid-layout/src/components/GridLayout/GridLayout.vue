@@ -102,6 +102,10 @@ const props = defineProps({
     type: Object as PropType<Breakpoints>,
     validator: breakpointsValidator
   },
+  dragIgnoreFrom: {
+    type: String,
+    required: false,
+  },
   horizontalShift: {
     default: false,
     type: Boolean
@@ -214,6 +218,7 @@ const gridItemProps = computed(() => ({
   breakpointCols: props.cols,
   colNum: props.colNum,
   containerWidth: width.value,
+  dragIgnoreFrom: props.dragIgnoreFrom,
   isDraggable: props.isDraggable,
   isResizable: props.isResizable,
   lastBreakpoint: lastBreakpoint.value,
